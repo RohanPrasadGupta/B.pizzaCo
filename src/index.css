@@ -16,6 +16,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* create your own class */
+
+@layer components {
+  .input {
+    @apply rounded-full border border-stone-200 p-2 text-sm transition-all duration-300 focus:outline-none focus:ring focus:ring-yellow-300;
+  }
+}
+
 /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
 .loader {
   width: 45px;
