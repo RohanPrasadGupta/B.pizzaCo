@@ -1,19 +1,20 @@
 import { formatCurrency } from "../../utils/helpers";
 import PropTypes from "prop-types";
 
-function OrderItem({ item }) {
+function OrderItem({ item, ingredients, isLoadingIngredients }) {
   const { quantity, name, totalPrice } = item;
-
-  // isLoadingIngredients, ingredients console.log(isLoadingIngredients, ingredients);
+  // console.log(ingredients);
+  // console.log(isLoadingIngredients);
 
   return (
-    <li className=" py-3 ">
-      <div className=" flex items-center justify-between gap-4 text-sm">
+    <li className="py-3">
+      <div className="flex items-center justify-between gap-4 text-sm">
         <p>
-          <span className=" font-bold">{quantity}&times;</span> {name}
+          <span className="font-bold">{quantity}&times;</span> {name}
         </p>
-        <p className=" font-bold">{formatCurrency(totalPrice)}</p>
+        <p className="font-bold">{formatCurrency(totalPrice)}</p>
       </div>
+      <p>{isLoadingIngredients ? "Loading..." : ingredients.join(", ")}</p>
     </li>
   );
 }
@@ -24,6 +25,8 @@ OrderItem.propTypes = {
     name: PropTypes.string.isRequired,
     totalPrice: PropTypes.number.isRequired,
   }).isRequired,
+  ingredients: PropTypes.array.isRequired,
+  isLoadingIngredients: PropTypes.bool.isRequired,
 };
 
 export default OrderItem;
